@@ -24,6 +24,11 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 export default function Header() {
+    const menu = [
+        { text: 'Flow', href: '/flow' },
+        { text: 'Interesting', href: '/interesting' },
+    ]
+
     return (
         <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -34,36 +39,16 @@ export default function Header() {
                     <Package2 className="h-6 w-6" />
                     <span className="sr-only">Acme Inc</span>
                 </Link>
-                <Link
-                    href="#"
-                    className="text-foreground transition-colors hover:text-foreground"
-                >
-                    Dashboard
-                </Link>
-                <Link
-                    href="#"
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                    Orders
-                </Link>
-                <Link
-                    href="#"
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                    Products
-                </Link>
-                <Link
-                    href="#"
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                    Customers
-                </Link>
-                <Link
-                    href="#"
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                    Analytics
-                </Link>
+                {menu.map((item, index) => (
+                    <Link
+                        key={index}
+                        href={item.href}
+                        className={`transition-colors hover:text-foreground ${index === 0 ? 'text-foreground' : 'text-muted-foreground'
+                            }`}
+                    >
+                        {item.text}
+                    </Link>
+                ))}
             </nav>
             <Sheet>
                 <SheetTrigger asChild>
@@ -85,33 +70,16 @@ export default function Header() {
                             <Package2 className="h-6 w-6" />
                             <span className="sr-only">Acme Inc</span>
                         </Link>
-                        <Link href="#" className="hover:text-foreground">
-                            Dashboard
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Orders
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Products
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Customers
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Analytics
-                        </Link>
+                        {menu.map((item, index) => (
+                            <Link
+                                key={index}
+                                href={item.href}
+                                className={`hover:text-foreground ${index === 0 ? '' : 'text-muted-foreground'
+                                    }`}
+                            >
+                                {item.text}
+                            </Link>
+                        ))}
                     </nav>
                 </SheetContent>
             </Sheet>
