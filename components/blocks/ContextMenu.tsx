@@ -9,15 +9,15 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
-const PopupMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
+const PopupMenu = () => {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="p-4">
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="icon"
             className="transition-transform duration-200 ease-in-out hover:scale-110"
           >
@@ -29,19 +29,19 @@ const PopupMenu = () => {
             <DialogTitle>Menu Options</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <Button 
+            <Button
               onClick={() => console.log('Option 1 clicked')}
               className="transition-all duration-200 ease-in-out hover:scale-105"
             >
               Option 1
             </Button>
-            <Button 
+            <Button
               onClick={() => console.log('Option 2 clicked')}
               className="transition-all duration-200 ease-in-out hover:scale-105"
             >
               Option 2
             </Button>
-            <Button 
+            <Button
               onClick={() => console.log('Option 3 clicked')}
               className="transition-all duration-200 ease-in-out hover:scale-105"
             >
