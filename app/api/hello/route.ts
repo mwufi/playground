@@ -12,22 +12,27 @@ const openai = new OpenAI({
 export async function POST(request) {
     try {
         // Parse the request body
-        const { text, model } = await request.json();
+        const req = await request.json()
+        let { messages, text, model } = req;
 
         // Validate input
-        if (!text || !model) {
-            return Response.json({ error: 'Missing text or model parameter' }, { status: 400 });
+        if (!text && !messages) {
+            console.log(req)
+
+            return Response.json({ error: 'Missing text or messages parameter' }, { status: 400 });
         }
+        // default format
+        messages = messages || [{ role: 'user', content: text }]
 
         // Call OpenAI API
         const completion = await openai.chat.completions.create({
-            model: model,
-            messages: [{ role: 'user', content: text }],
+            model: model || "gpt-4o-mini",
+            messages: messages,
         });
 
         // Extract and return the response
         const response = completion.choices[0].message.content;
-        return Response.json({ response });
+        return Response.json({ message: response });
 
     } catch (error) {
         console.error('Error:', error);

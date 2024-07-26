@@ -1,4 +1,5 @@
 'use client'
+
 import { useState, useCallback } from 'react';
 
 import JavascriptNode from "@/components/nodes/JavascriptNode"
@@ -11,6 +12,10 @@ import {
     applyEdgeChanges,
     addEdge,
 } from '@xyflow/react';
+
+import PopupMenu from './ContextMenu';
+import ActionNav from './ActionNav';
+import ChatWidget from './ChatWidget';
 
 const createNode = (label: string, position: { x: number, y: number }, data: any) => {
     return {
@@ -62,6 +67,15 @@ type FlowProps = {
     onSelect?: (node: Node<NodeData> | null) => void;
 };
 
+
+const LeftPopup = ({ children }) => {
+    return (
+        <div className='absolute top-0 border p-4'>
+            {children}
+        </div>
+    )
+}
+
 function Flow({ onSelect = undefined }: FlowProps) {
     const [nodes, setNodes] = useState(initialNodes);
     const [edges, setEdges] = useState(initialEdges);
@@ -91,28 +105,30 @@ function Flow({ onSelect = undefined }: FlowProps) {
         ),
         [],
     );
+
     return (
-        <div style={{ height: '100%' }} className='relative'>
-            <ReactFlow
-                nodes={nodes}
-                nodeTypes={nodeTypes}
-                onNodesChange={onNodesChange}
-                edges={edges}
-                onEdgesChange={onEdgesChange}
-                onConnect={onConnect}
-                onNodeClick={onNodeClick}
-                fitView>
-                <Background color="#554" />
-                <Controls />
-            </ReactFlow>
-            {selectedNode && (
-                <div className='absolute top-0' style={{ marginTop: '20px', padding: '10px', border: '1px solid #ccc' }}>
-                    <h3>Selected Node:</h3>
-                    <p>ID: {selectedNode.id}</p>
-                    <p>Type: {selectedNode.type || 'default'}</p>
-                    <p>Label: {selectedNode.data.label}</p>
-                </div>
-            )}
+        <div style={{ height: '100%' }} className='relative flex flex-col'>
+            <ActionNav />
+
+            <div className="h-full relative">
+                <ReactFlow
+                    nodes={nodes}
+                    nodeTypes={nodeTypes}
+                    onNodesChange={onNodesChange}
+                    edges={edges}
+                    onEdgesChange={onEdgesChange}
+                    onConnect={onConnect}
+                    onNodeClick={onNodeClick}
+                    fitView>
+                    <Background color="#554" />
+                    <Controls />
+                </ReactFlow>
+                <LeftPopup>
+                    <PopupMenu />
+                </LeftPopup>
+                <ChatWidget />
+            </div>
+
         </div>
     );
 }
