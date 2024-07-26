@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Bell, Copy, Edit, ArrowUpCircle, Settings, Trash2 } from 'lucide-react';
 
+
 const JavascriptNode = ({ data }) => {
     const [text, setText] = useState('')
     const showButtons = false;
@@ -35,8 +36,8 @@ const JavascriptNode = ({ data }) => {
                     />
                 </CardContent>
             </Card>
-            <Handle type="target" position={Position.Top} className="w-2 h-2" />
-            <Handle type="source" position={Position.Bottom} className="w-2 h-2" />
+            {/* <Handle type="target" position={Position.Top} className="w-2 h-2" />
+            <Handle type="source" position={Position.Bottom} className="w-2 h-2" /> */}
         </div>
     );
 };
