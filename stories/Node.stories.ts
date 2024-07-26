@@ -1,5 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { StoryObj } from '@storybook/react';
 import JavascriptNode from '@/components/nodes/JavascriptNode';
 import '@/app/globals.css'; // replace with the name of your tailwind css file
 
