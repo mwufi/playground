@@ -11,16 +11,17 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-
+import cx from "clsx"
 import Flow from "@/components/blocks/Flow";
 
 export default function Page() {
+  const showSidebar = false;
   return (
-    <div className="grid grid-cols-2 h-full">
+    <div className={cx("grid h-full", showSidebar && 'grid-cols-2')}>
       <Flow onSelect={(node) => {
         console.log(node)
       }} />
-      <div className="p-6 border">
+      {showSidebar && <div className="p-6 border">
         <p className="text-4xl">Sidebar</p>
         <Card>
           <CardHeader>
@@ -52,7 +53,7 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </div>}
     </div>
   )
 }

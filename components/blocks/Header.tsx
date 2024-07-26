@@ -27,6 +27,7 @@ export default function Header() {
     const menu = [
         { text: 'Flow', href: '/flow' },
         { text: 'Interesting', href: '/interesting' },
+        { text: 'Charts', href: '/play' },
     ]
 
     return (

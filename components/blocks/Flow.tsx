@@ -6,67 +6,50 @@ import JavascriptNode from "@/components/nodes/JavascriptNode"
 const nodeTypes = { javascriptNode: JavascriptNode };
 
 import {
-    ReactFlow, Background, BackgroundVariant, Controls,
+    ReactFlow, Background, Controls,
     applyNodeChanges,
     applyEdgeChanges,
     addEdge,
 } from '@xyflow/react';
 
-const initialNodes = [{
-    id: '1',
-    type: 'javascriptNode',
-    position: { x: 0, y: 0 },
-    data: {
+const createNode = (label: string, position: { x: number, y: number }, data: any) => {
+    return {
+        id: label,
+        type: 'javascriptNode',
+        position,
+        data: {
+            ...data,
+            onFormatChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                console.log("text changed", e)
+            }
+        }
+    };
+};
+
+const initialNodes = [
+    createNode('Custom Node', { x: 0, y: 0 }, {
         label: 'Custom Node',
         inputs: ['input1', 'input2', 'input3'],
         text: 'be a pirate',
-        onFormatChange: (e) => {
-            console.log("text changed", e)
-        }
-    }
-},
-{
-    id: '2',
-    type: 'javascriptNode',
-    position: { x: 250, y: 200 },
-    data: {
+    }),
+    createNode('Prompt', { x: 250, y: 200 }, {
         label: 'Prompt',
         inputs: ['text'],
         outputs: ['text'],
         text: 'Prompt\ninput: text\noutput: text',
-        onFormatChange: (e) => {
-            console.log("text changed", e)
-        }
-    }
-},
-{
-    id: '3',
-    type: 'javascriptNode',
-    position: { x: 250, y: 450 },
-    data: {
+    }),
+    createNode('GetWebpage', { x: 250, y: 450 }, {
         label: 'GetWebpage',
         inputs: ['url'],
         outputs: ['html'],
         text: 'GetWebpage\ninput: url\noutput: html',
-        onFormatChange: (e) => {
-            console.log("text changed", e)
-        }
-    }
-},
-{
-    id: '4',
-    type: 'javascriptNode',
-    position: { x: 250, y: 700 },
-    data: {
+    }),
+    createNode('Generated News Article', { x: 250, y: 700 }, {
         label: 'Generated News Article',
         inputs: [],
         outputs: [],
         text: 'Generated News Article',
-        onFormatChange: (e) => {
-            console.log("text changed", e)
-        }
-    }
-},
+    }),
 ];
 
 const initialEdges = [
@@ -119,7 +102,7 @@ function Flow({ onSelect = undefined }: FlowProps) {
                 onConnect={onConnect}
                 onNodeClick={onNodeClick}
                 fitView>
-                {/* <Background color="#abd" size={5} variant={BackgroundVariant.Lines} /> */}
+                <Background color="#554" />
                 <Controls />
             </ReactFlow>
             {selectedNode && (
