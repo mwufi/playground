@@ -10,6 +10,9 @@ import { Input } from '@/components/ui/input';
 import { Bell, Copy, Edit, ArrowUpCircle, Settings, Trash2 } from 'lucide-react';
 
 const JavascriptNode = ({ data }) => {
+    const [text, setText] = useState('')
+    const showButtons = false;
+
     return (
         <div className="relative">
             <Card className="w-[250px]">
@@ -21,13 +24,19 @@ const JavascriptNode = ({ data }) => {
                     <Input
                         placeholder="Type some text here.."
                         className="w-full"
-                        value={data.text || ''}
-                        onChange={(e) => data.onFormatChange(e.target.value)}
+                        value={text}
+                        onChange={(e) => {
+                            setText(e.target.value)
+                        }}
+                        onMouseMove={(e) => {
+                            // Prevent dragging when interacting with the input
+                            e.stopPropagation();
+                        }}
                     />
                 </CardContent>
             </Card>
 
-            <div className="absolute top-0 right-[-50px] flex flex-col space-y-2">
+            {showButtons && <div className="absolute top-0 right-[-50px] flex flex-col space-y-2">
                 <Button variant="outline" size="icon">
                     <Copy className="h-4 w-4" />
                 </Button>
@@ -43,7 +52,7 @@ const JavascriptNode = ({ data }) => {
                 <Button variant="outline" size="icon" className="text-red-600">
                     <Trash2 className="h-4 w-4" />
                 </Button>
-            </div>
+            </div>}
 
             <Handle type="target" position={Position.Top} className="w-2 h-2" />
             <Handle type="source" position={Position.Bottom} className="w-2 h-2" />
