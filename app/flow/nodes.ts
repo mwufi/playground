@@ -16,8 +16,8 @@ export default [
     },
     {
         id: '3',
-        type: 'colorChooser',
-        data: { color: '#B794F4' },
+        type: 'textDisplayNode',
+        data: { content: 'This is some markdown!' },
         position: { x: 250, y: 250 },
     },
 ] as AppNode[];

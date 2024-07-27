@@ -8,8 +8,9 @@ import {
 } from '@xyflow/react';
 
 export type ColorNode = Node<{ color: string }, 'colorChooser'>;
+export type TextNode = Node<{ content: string }, 'textDisplayNode'>;
 
-export type AppNode = ColorNode | BuiltInNode;
+export type AppNode = ColorNode | BuiltInNode | TextNode;
 
 export type AppState = {
     nodes: AppNode[];

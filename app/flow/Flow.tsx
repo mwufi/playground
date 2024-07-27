@@ -6,9 +6,9 @@ import {
     ReactFlow, Background, Controls
 } from '@xyflow/react';
 
-import PopupMenu from './ContextMenu';
-import ActionNav from './ActionNav';
-import ChatWidget from './ChatWidget';
+import PopupMenu from '../../components/blocks/ContextMenu';
+import ActionNav from '../../components/blocks/ActionNav';
+import ChatWidget from '../../components/blocks/ChatWidget';
 
 import { useHotkeys } from 'react-hotkeys-hook'
 
@@ -24,7 +24,9 @@ const selector = (state) => ({
 });
 
 import ColorChooserNode from './ColorChooserNode';
-const nodeTypes = { colorChooser: ColorChooserNode }
+import TextDisplay from './TextDisplayNode';
+
+const nodeTypes = { colorChooser: ColorChooserNode, textDisplayNode: TextDisplay }
 
 const LeftPopup = ({ children }) => {
     return (
