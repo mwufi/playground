@@ -23,6 +23,28 @@ const HeaderNode = ({ data }) => {
             [name]: type === 'checkbox' ? checked : value
         }));
     };
+
+    const BottomLabel = ({ name, type }) => (
+        <div className="absolute left-[50%] whitespace-nowrap bg-white/30 p-2 rounded-lg text-center" style={{
+            transform: 'translateX(-50%)',
+            top: '1.5rem'
+        }}>
+            {name}
+            <p className="text-xs">type={type}</p>
+        </div>
+    )
+
+    const TopLabel = ({ name, type }) => (
+        <div className="absolute left-[50%] whitespace-nowrap top-4 bg-white/30 p-2 rounded-lg text-center" style={{
+            transform: 'translateX(-50%)',
+            top: '-4rem'
+        }}>
+            {name}
+            <p className="text-xs">type={type}</p>
+        </div>
+    )
+
+
     return (
         <div className={`bg-white rounded-lg shadow-md border border-gray-200 ${dev ? 'w-96' : 'w-96'}`}>
             <div className="flex items-center justify-between p-3 bg-blue-100 rounded-t-lg border-b border-gray-200">
@@ -98,11 +120,15 @@ const HeaderNode = ({ data }) => {
                     boxShadow: '0 0 10px #3B82F6',
                     zIndex: -1
                 }}
-            />
+            >
+                <TopLabel name="IDs" type="list of int" />
+            </Handle>
             <Handle
                 type="source"
                 position={Position.Bottom}
+                id="left"
                 style={{
+                    left: '20%',
                     width: '20px',
                     height: '20px',
                     background: '#FF00FF',
@@ -112,10 +138,25 @@ const HeaderNode = ({ data }) => {
                     zIndex: -1
                 }}
             >
-                <div className="absolute w-[300px] left-[-30px] top-4 bg-white/30 p-2 rounded-lg">
-                    country
-                    <p className="text-sm">type: text</p>
-                </div>
+                <BottomLabel name="country" type="text" />
+            </Handle>
+            <Handle
+                type="source"
+                position={Position.Bottom}
+                id="right"
+                style={{
+                    left: '80%',
+                    width: '20px',
+                    height: '20px',
+                    background: '#FF00FF',
+                    borderRadius: '4px',
+                    border: '3px solid #FF66FF',
+                    boxShadow: '0 0 10px #FF00FF',
+                    zIndex: -1
+                }}
+            >
+                <BottomLabel name="country" type="text" />
+
             </Handle>
         </div>
     );
