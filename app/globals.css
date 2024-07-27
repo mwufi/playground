@@ -74,3 +74,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.markdown-content h1 {
+  @apply text-4xl;
+}
+
+.markdown-content h2 {
+  @apply text-3xl;
+}

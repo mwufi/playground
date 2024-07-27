@@ -9,8 +9,9 @@ import {
 
 export type ColorNode = Node<{ color: string }, 'colorChooser'>;
 export type TextNode = Node<{ content: string }, 'textDisplayNode'>;
+export type ImageNode = Node<{ content: string, width?: number, height?: number }, 'imageDisplayNode'>;
 
-export type AppNode = ColorNode | BuiltInNode | TextNode;
+export type AppNode = ColorNode | BuiltInNode | TextNode | ImageNode;
 
 export type AppState = {
     nodes: AppNode[];

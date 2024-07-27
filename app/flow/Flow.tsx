@@ -25,8 +25,15 @@ const selector = (state) => ({
 
 import ColorChooserNode from './ColorChooserNode';
 import TextDisplay from './TextDisplayNode';
+import ImageDisplay from './ImageDisplayNode'
+import ApiFetchNode from './ApiFetchNode';
 
-const nodeTypes = { colorChooser: ColorChooserNode, textDisplayNode: TextDisplay }
+const nodeTypes = {
+    colorChooser: ColorChooserNode,
+    textDisplayNode: TextDisplay,
+    imageDisplayNode: ImageDisplay,
+    apiFetch: ApiFetchNode
+}
 
 const LeftPopup = ({ children }) => {
     return (

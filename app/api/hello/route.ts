@@ -1,7 +1,9 @@
 import OpenAI from 'openai';
 
 export async function GET(request) {
-    return new Response('Hello, Next.js! Your API key is ' + process.env.OPENAI_API_KEY);
+    return Response.json('Hello, Next.js! Your API key is ' + process.env.OPENAI_API_KEY
+    );
+
 }
 
 // Initialize the OpenAI client
