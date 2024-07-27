@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { HelpCircle } from "lucide-react"
 
-const TextBoxGenerator = ({ name, helpMessage, placeholder }) => {
+const TextBoxGenerator = ({ name, value, helpMessage, placeholder }) => {
     return (
         <div className="space-y-2">
             <div className="flex items-center space-x-2">

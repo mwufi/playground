@@ -11,7 +11,9 @@ export type ColorNode = Node<{ color: string }, 'colorChooser'>;
 export type TextNode = Node<{ content: string }, 'textDisplayNode'>;
 export type ImageNode = Node<{ content: string, width?: number, height?: number }, 'imageDisplayNode'>;
 
-export type AppNode = ColorNode | BuiltInNode | TextNode | ImageNode;
+export type HeaderNode = Node<{ content: string }, 'signIn'>;
+
+export type AppNode = ColorNode | BuiltInNode | TextNode | ImageNode | HeaderNode;
 
 export type AppState = {
     nodes: AppNode[];

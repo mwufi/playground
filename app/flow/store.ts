@@ -31,7 +31,7 @@ const useStore = create<AppState>((set, get) => ({
   },
   onConnect: (connection) => {
     set({
-      edges: addEdge(connection, get().edges),
+      edges: addEdge({ ...connection, animated: true }, get().edges),
     });
   },
   setNodes: (nodes) => {

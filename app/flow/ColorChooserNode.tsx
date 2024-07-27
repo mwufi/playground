@@ -6,7 +6,7 @@ function ColorChooserNode({ id, data }: NodeProps<ColorNode>) {
     const updateNodeColor = useStore(state => state.updateNodeColor)
 
     return (
-        <div style={{ backgroundColor: data.color, borderRadius: 10 }}>
+        <div className='w-[100px]' style={{ backgroundColor: data.color, borderRadius: 10 }}>
             <Handle type="target" position={Position.Top} />
             <div className="p-4">
                 <input type='color'
@@ -14,10 +14,9 @@ function ColorChooserNode({ id, data }: NodeProps<ColorNode>) {
                     onChange={e => updateNodeColor(id, e.target.value)}
                     className='nodrag' />
             </div>
-            <Handle type="source" position={Position.Bottom} />
-
+            <Handle type="source" position={Position.Bottom} id="hello" style={{ left: 10 }} />
+            <Handle type="source" position={Position.Bottom} id="goodbye" style={{ right: 10 }} />
         </div>
     )
-
 }
 export default ColorChooserNode

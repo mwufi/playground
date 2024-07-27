@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Handle, Position } from '@xyflow/react';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
+import TextBoxGenerator from '@/components/blocks/TextboxGenerator';
 
 const ApiFetchNode = ({ data }) => {
     const [apiData, setApiData] = useState(null);
@@ -35,6 +36,19 @@ const ApiFetchNode = ({ data }) => {
         <div className="p-4 bg-white rounded-lg shadow-md w-[330px]">
             <Handle type="target" position={Position.Top} />
             <h3 className="text-lg font-semibold mb-4">API Fetch Node</h3>
+
+            <TextBoxGenerator 
+                name="API URL"
+                value={data.url || ''}
+                onChange={(newUrl) => {
+                    // Assuming there's a way to update the node data
+                    // This might need to be implemented in the parent component
+                    // or through a custom hook
+                    if (data.onDataChange) {
+                        data.onDataChange({ ...data, url: newUrl });
+                    }
+                }}
+            />
 
             <Button
                 onClick={fetchData}

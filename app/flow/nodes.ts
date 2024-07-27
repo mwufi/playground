@@ -2,33 +2,53 @@ import { AppNode } from './types';
 
 export default [
     {
-        id: '1',
-        type: 'colorChooser',
-        data: { color: '#4FD1C5' },
-        position: { x: 250, y: 25 },
+        "id": "header-1",
+        "type": "signIn",
+        "position": {
+            "x": 100,
+            "y": 100
+        },
+        "data": {
+            "content": "Sign in with Google"
+        },
+        "measured": {
+            "width": 384,
+            "height": 259
+        },
+        "selected": false
     },
     {
-        id: '2',
-        type: 'colorChooser',
-        data: { color: '#F6E05E' },
-        position: { x: 100, y: 125 },
+        "id": "header-2",
+        "type": "signIn",
+        "position": {
+            "x": 362.1219127446953,
+            "y": 635.4583802356779
+        },
+        "data": {
+            "content": "Sign in with Google"
+        },
+        "measured": {
+            "width": 384,
+            "height": 259
+        },
+        "selected": false,
+        "dragging": false
     },
     {
-        id: '3',
-        type: 'textDisplayNode',
-        data: { content: 'This is some markdown!\n## Hi there' },
-        position: { x: 250, y: 250 },
-    },
-    {
-        id: '4',
-        type: 'imageDisplayNode',
-        data: { content: 'https://images.unsplash.com/photo-1721777426117-9d528a3f3fd0?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-        position: { x: 550, y: 220 },
-    },
-    {
-        id: 'api-fetch-1',
-        type: 'apiFetch',
-        position: { x: 300, y: 100 },
-        data: { autoFetch: true },
+        "id": "header-3",
+        "type": "signIn",
+        "position": {
+            "x": 709.2135887918308,
+            "y": 197.30104657972095
+        },
+        "data": {
+            "content": "Sign in with Google"
+        },
+        "measured": {
+            "width": 384,
+            "height": 259
+        },
+        "selected": false,
+        "dragging": false
     }
 ] as AppNode[];

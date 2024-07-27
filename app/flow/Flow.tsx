@@ -27,12 +27,14 @@ import ColorChooserNode from './ColorChooserNode';
 import TextDisplay from './TextDisplayNode';
 import ImageDisplay from './ImageDisplayNode'
 import ApiFetchNode from './ApiFetchNode';
+import HeaderNode from './nodes/HeaderNode';
 
 const nodeTypes = {
     colorChooser: ColorChooserNode,
     textDisplayNode: TextDisplay,
     imageDisplayNode: ImageDisplay,
-    apiFetch: ApiFetchNode
+    apiFetch: ApiFetchNode,
+    signIn: HeaderNode
 }
 
 const LeftPopup = ({ children }) => {
@@ -48,7 +50,12 @@ function Flow() {
         useShallow(selector),
     );
 
-    useHotkeys('b', () => alert('hi'))
+    useHotkeys('b', () => {
+        const currentNodes = useStore.getState().nodes;
+        const currentEdges = useStore.getState().edges;
+        console.log('Current Nodes:', currentNodes);
+        console.log('Current Edges:', currentEdges);
+    })
 
     return (
         <div style={{ height: '100%' }} className='relative flex flex-col'>
